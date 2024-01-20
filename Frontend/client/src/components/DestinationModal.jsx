@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import { Modal, Typography, TextField, Box, Grid, Button } from "@mui/material";
 import axios from "axios";
+import { SnackbarContext } from "../utils/SnackbarContextUtil";
 
 function DestinationModal({ openModal, setOpenModal }) {
+  const { snack, setSnack } = useContext(SnackbarContext);
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -34,7 +37,11 @@ function DestinationModal({ openModal, setOpenModal }) {
       const isInputFieldEmpty = !name || !cost || !notes;
 
       if (isInputFieldEmpty) {
-        console.log("input field empty");
+        setSnack({
+          message: "Missing fields detected!",
+          open: true,
+          severity: "warning",
+        });
       } else {
         const destination = {
           name,
@@ -46,11 +53,19 @@ function DestinationModal({ openModal, setOpenModal }) {
           await axios.post("url path", destination);
           handleClose();
         } catch (error) {
-          console.log("error sending to server");
+          setSnack({
+            message: "Error!",
+            open: true,
+            severity: "warning",
+          });
         }
       }
     } catch (error) {
-      console.log("error");
+      setSnack({
+        message: "Error!",
+        open: true,
+        severity: "warning",
+      });
     }
   };
 
