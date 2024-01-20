@@ -3,7 +3,7 @@ const router = express.Router();
 
 const itineraryController = require("../controllers/itineraryController");
 
-router.get("/all", itineraryController.getAllItineraries);
+router.get("/all/:userId", itineraryController.getAllItineraries);
 router.get("/:id", itineraryController.getItinerary);
 router.post("/", itineraryController.addItinerary);
 router.put("/", itineraryController.editItinerary);
