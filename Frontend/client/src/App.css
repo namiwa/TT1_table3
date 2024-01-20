@@ -4,8 +4,8 @@ html, body, #root {
   background-color: #D3D3D3;
 }
 
-body {
-  width: 80%;
+.container {
+  width: 80% !important;
   margin: auto;
 }
 
