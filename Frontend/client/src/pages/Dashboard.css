@@ -1,0 +1,43 @@
+.dashboard-page .dashboard-table {
+    margin: 50px 0;
+}
+
+.dashboard-page thead th, .dashboard-page tbody th {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.dashboard-page thead {
+    background-color: #ededed;
+}
+
+.dashboard-page tbody th {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.dashboard-page thead th .MuiSvgIcon-root {
+    vertical-align: sub;
+    font-size: 1.3rem;
+}
+
+.destinations-list {
+    padding-left: 150px;
+}
+
+.MuiButton-text.actions-button {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    color: #000000;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.MuiButton-text.actions-button:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.table-content {
+    
+}

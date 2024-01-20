@@ -6,8 +6,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
-import { Button } from "@mui/material";
-import DestinationModal from "../components/DestinationModal";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,36 +30,28 @@ const Login = () => {
     console.log("Submit");
   };
 
-  const [openModal, setOpenModal] = useState(false);
-  const handleOpen = () => setOpenModal(true);
 
   return (
-    <>
-      <Button onClick={handleOpen}>Open modal</Button>
-      {openModal && (
-        <DestinationModal openModal={openModal} setOpenModal={setOpenModal} />
-      )}
-    </>
-    // <section className='login-page'>
-    //     <div className='form-box'>
-    //         <h1>Login</h1>
-    //         <form onSubmit={handleLogin}>
-    //             <div className='form-input'>
-    //                 <FontAwesomeIcon icon={faUser} className="icons" />
-    //                 <label htmlFor='username'>USERNAME</label>
-    //                 <input type='text' id='username' onChange={(e) => setUsername(e.target.value)} />
-    //             </div>
-    //             <div className='form-input'>
-    //                 <FontAwesomeIcon icon={faKey} className="icons" />
-    //                 <label htmlFor='password'>PASSWORD</label>
-    //                 <input type={!showPassword ? 'password' : 'text'} id='password' onChange={(e) => setPassword(e.target.value)} />
-    //                 <FontAwesomeIcon icon={!showPassword ? faEye : faEyeSlash} className="icons password-icons" onClick={handleShowPassword} />
-    //             </div>
-    //             <button disabled={!isValid}>LOGIN</button>
-    //         </form>
-    //         <p>No account? <a href="/register">Register</a></p>
-    //     </div>
-    // </section>
+     <section className='login-page'>
+         <div className='form-box'>
+             <h1>Login</h1>
+             <form onSubmit={handleLogin}>
+                 <div className='form-input'>
+                     <FontAwesomeIcon icon={faUser} className="icons" />
+                     <label htmlFor='username'>USERNAME</label>
+                     <input type='text' id='username' onChange={(e) => setUsername(e.target.value)} />
+                 </div>
+                 <div className='form-input'>
+                     <FontAwesomeIcon icon={faKey} className="icons" />
+                     <label htmlFor='password'>PASSWORD</label>
+                     <input type={!showPassword ? 'password' : 'text'} id='password' onChange={(e) => setPassword(e.target.value)} />
+                     <FontAwesomeIcon icon={!showPassword ? faEye : faEyeSlash} className="icons password-icons" onClick={handleShowPassword} />
+                 </div>
+                 <button disabled={!isValid}>LOGIN</button>
+             </form>
+             <p>No account? <a href="/register">Register</a></p>
+         </div>
+     </section>
   );
 };
 

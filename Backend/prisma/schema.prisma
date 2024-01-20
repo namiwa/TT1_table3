@@ -9,3 +9,53 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  userId Int @id @default(autoincrement())
+  firstName String @map("first_name") @db.VarChar(50)
+  lastName String @map("last_name") @db.VarChar(50)
+  password String @db.VarChar(100)
+  username String @db.VarChar(20)
+
+  // @One to many user can have many Itineraries
+  userItineraries Itinerary[]
+}
+
+model Itinerary {
+  iternaryId Int @id @default(autoincrement())
+  budget Float?
+  title String? @db.VarChar(100)
+
+  // @ManyToOne with user
+  userIternaryId Int? @map("user_id")
+  user User? @relation(fields: [userIternaryId], references: [userId])
+
+  // One to many. Many itineraries can have one country
+  countryIternaryId Int? @map("country_id")
+  country Country? @relation(fields: [countryIternaryId], references: [countryId])
+
+  // @manytomany  One itinerary can have many destination, Relationship between Iternary <-> destination
+  destination Destination[]
+}
+
+model Country {
+  countryId  Int @id @default(autoincrement())
+  name String @db.VarChar(50)
+  iternaries Itinerary[]
+
+  destinations Destination[]
+}
+//
+model Destination {
+  destinationId Int @id @default(autoincrement())
+  cost Float
+  name String @db.VarChar(50)
+  notes String
+
+  // Relationship between destination -> country
+  destinationCountryId Int?
+  country Country? @relation(fields: [destinationCountryId], references: [countryId])
+
+  // @manytomany Relationship between Destination <-> Iternary
+  itineraries Itinerary[]
+}
