@@ -1,6 +1,8 @@
-import { useState } from "react";
-import DashboardTable from "../components/DashboardTable";
-import "./Dashboard.css";
+import { useState } from 'react'
+import DashboardTable from '../components/DashboardTable';
+import './Dashboard.css';
+
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import NewDestinationModal from "../components/NewDestinationModal";
 import EditDestinationModal from "../components/EditDestinationModal";
@@ -10,6 +12,7 @@ const Dashboard = () => {
   const [openModal, setOpenModal] = useState(false);
   const handleOpen = () => setOpenModal(true);
 
+  const navigate = useNavigate()
   const [openEditModal, setOpenEditModal] = useState(false);
   const handleOpenEdit = () => setOpenEditModal(true);
 
@@ -41,6 +44,8 @@ const Dashboard = () => {
           setOpenModal={setOpenNewItinModal}
         />
       )}
+        <button className='add-button' onClick={() => {navigate("/itinerary");}}>ADD ITENARY</button>
+        <DashboardTable />
       <DashboardTable />
     </section>
   );
