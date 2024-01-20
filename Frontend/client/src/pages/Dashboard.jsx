@@ -21,31 +21,28 @@ const Dashboard = () => {
 
   return (
     <section className="dashboard-page container">
-      <Button onClick={handleOpen}>Open modal</Button>
+      <button className='add-button' onClick={handleOpen}>Add Destination</button>
       {openModal && (
         <NewDestinationModal
           openModal={openModal}
           setOpenModal={setOpenModal}
         />
       )}
-      <Button onClick={handleOpenEdit}>Open edit modal</Button>
+      <button className='add-button' onClick={handleOpenEdit}>Edit Destination</button>
       {openEditModal && (
         <EditDestinationModal
           openModal={openEditModal}
           setOpenModal={setOpenEditModal}
         />
       )}
-      <Button className="add-button" onClick={handleNewItinerary}>
-        Add new itinerary
-      </Button>
+
       {openNewItinModal && (
         <AddNewItinerary
           openModal={openNewItinModal}
           setOpenModal={setOpenNewItinModal}
         />
       )}
-        <button className='add-button' onClick={() => {navigate("/itinerary");}}>ADD ITENARY</button>
-        <DashboardTable />
+      <button className='add-button' onClick={() => {navigate("/itinerary");}}>Add Intinerary</button>
       <DashboardTable />
     </section>
   );

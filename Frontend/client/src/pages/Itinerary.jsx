@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Container, Button } from "@mui/material";
 import DestinationTable from "../components/DestinationTable";
-import DestinationModal from "../components/DestinationModal";
+import NewDestinationModal from "../components/NewDestinationModal";
 import PublicIcon from "@mui/icons-material/Public";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -60,7 +60,7 @@ const Itinerary = () => {
         </div>
       </Container>
       {openModal && (
-        <DestinationModal openModal={openModal} setOpenModal={setOpenModal} />
+        <NewDestinationModal openModal={openModal} setOpenModal={setOpenModal} />
       )}
     </>
   );

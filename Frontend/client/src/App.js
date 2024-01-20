@@ -12,15 +12,13 @@ function App() {
     <BrowserRouter>
     <Header />
       <SnackbarProvider>
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          
+        <Routes>          
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Dashboard />} />
           <Route path="/itinerary" element={<Itinerary />} />
-          <Route path="*" element={<Itinerary />} />
+          <Route path="*" element={<Login />} />
         </Routes>
       </SnackbarProvider>
     </BrowserRouter>
