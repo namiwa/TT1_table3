@@ -1,6 +1,18 @@
 // const db = require("./db");
 
-const getAllItineraries = async (req, res) => {};
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+const getAllItineraries = async (req, res) => {
+  try {
+    const result = await prisma.itinerary.findMany();
+    res.send(result);
+    res.status(200).json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const getItinerary = async (req, res) => {};
 
