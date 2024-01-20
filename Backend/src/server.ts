@@ -1,6 +1,7 @@
 import {connectIternaryToCountry, createCountry, createDestination, createUserItinerary, getUser, newUser} from "./repository/testRepository";
 
 require('dotenv').config();
+import cors from "cors";
 import express from "express";
 
 const PORT = process.env.PORT;
