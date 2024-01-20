@@ -1,20 +1,32 @@
 import { PrismaClient } from '@prisma/client';
+import {NextFunction, Request, Response} from "express";
+import {deleteDestinationById, getDestinationById } from '../repository/destinationRepository';
 
 const prisma = new PrismaClient();
 
 //READ OPERATIONS
-export const getAllDestination = async (req, res) => {
+export const getAllDestination = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        console.log(req.body)
         const result = await prisma.destination.findMany({});
         res.send(result);
         res.status(200).json({ success: true, data: result });
-      } catch (error) {
-        console.error(error);
+      } catch (e) {
+        next(e)
       }
 };
 
-export const createDestination = async (req, res) => {
+export const getDestinationViaId = async (req: Request, res: Response, next: NextFunction)=> {
+    try {
+        const destinationId: number = req.body
+        const destination = getDestinationById(destinationId)
+        res.status(200).json({destination})
+    }
+    catch (e) {
+        next(e)
+    }
+}
+
+export const createDestination = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const result = prisma.destination.create({
             data: {
@@ -32,8 +44,9 @@ export const createDestination = async (req, res) => {
       }
 };
 
-export const updateDestination = async (req, res)  => {
-    return prisma.destination.update({
+export const updateDestination = async (req: Request, res: Response, next: NextFunction)  => {
+    try {
+        const result = prisma.destination.update({
         where: {
             destinationId: req.body.destinationId
         },
@@ -43,21 +56,22 @@ export const updateDestination = async (req, res)  => {
             cost: req.body.cost,
             name: req.body.name,
             notes: req.body.notes
-        }
-    });
+        }})
+        res.status(200).json({result})
+    }catch (e) {
+        next(e)
+    }
+
 }
 
-// export const deleteDestination = (insuranceId: number, userId: number) => {
-//     return prisma.insurancePolicy.update({
-//         where: {
-//             insuranceId: insuranceId
-//         },
-//         data: {
-//             user: {
-//                 disconnect: {
-//                     userId: userId
-//                 }
-//             }
-//         }
-//     });
-// };
+export const deleteDestinationViaId = (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const destinationId: number = req.body.destinationId
+        const result = deleteDestinationById(destinationId)
+        res.status(200)
+    }
+    catch (e) {
+        next(e)
+    }
+
+};

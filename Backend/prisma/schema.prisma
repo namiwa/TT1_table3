@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -27,7 +27,7 @@ model Itinerary {
   title String? @db.VarChar(100)
 
   // @ManyToOne with user
-  userItineraryId Int? @map("user_id") 
+  userItineraryId Int? @map("user_id")
   user User? @relation(fields: [userItineraryId], references: [userId])
 
   // One to many. Many itineraries can have one country
