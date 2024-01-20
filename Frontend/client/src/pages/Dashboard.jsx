@@ -5,6 +5,7 @@ import './Dashboard.css';
 import { Button } from "@mui/material";
 import NewDestinationModal from "../components/NewDestinationModal";
 import EditDestinationModal from "../components/EditDestinationModal";
+import AddNewItinerary from "../components/AddNewItinerary";
 
 const Dashboard = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -12,6 +13,9 @@ const Dashboard = () => {
 
   const [openEditModal, setOpenEditModal] = useState(false);
   const handleOpenEdit = () => setOpenEditModal(true);
+
+  const [openNewItinModal, setOpenNewItinModal] = useState(false);
+  const handleNewItinerary = () => setOpenNewItinModal(true);
 
   return (
     <section className="dashboard-page container">
@@ -29,7 +33,15 @@ const Dashboard = () => {
           setOpenModal={setOpenEditModal}
         />
       )}
-      <button className="add-button">ADD ITINERARY</button>
+      <Button className="add-button" onClick={handleNewItinerary}>
+        Add new itinerary
+      </Button>
+      {openNewItinModal && (
+        <AddNewItinerary
+          openModal={openNewItinModal}
+          setOpenModal={setOpenNewItinModal}
+        />
+      )}
       <DashboardTable />
     </section>
   );
