@@ -3,7 +3,7 @@ import { Modal, Typography, TextField, Box, Grid, Button } from "@mui/material";
 import axios from "axios";
 import { SnackbarContext } from "../utils/SnackbarContextUtil";
 
-function DestinationModal({ openModal, setOpenModal }) {
+function NewDestinationModal({ openModal, setOpenModal }) {
   const { snack, setSnack } = useContext(SnackbarContext);
 
   const style = {
@@ -11,7 +11,7 @@ function DestinationModal({ openModal, setOpenModal }) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: 500,
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
@@ -93,7 +93,7 @@ function DestinationModal({ openModal, setOpenModal }) {
         <Box sx={style}>
           <Grid container spacing={2} direction="column">
             <Grid item>
-              <Typography variant="h4">New Destination</Typography>
+              <Typography variant="h4">Create a new destination</Typography>
             </Grid>
             {renderTextField("Name")}
             {renderTextField("Cost")}
@@ -117,4 +117,4 @@ function DestinationModal({ openModal, setOpenModal }) {
   );
 }
 
-export default DestinationModal;
+export default NewDestinationModal;
