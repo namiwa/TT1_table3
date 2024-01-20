@@ -19,10 +19,10 @@ app.use(passport.initialize()); // Create the passport strategy object
 app.use(express.json());
 app.use(cors(corsOptions))
 
-app.use("/auth", authRoutes )
-app.use("/country", countryRoutes);
-app.use("/itinerary", itineraryRoutes);
-app.use("/destination", destinationRoutes);
+app.use("/auth/v1", authRoutes )
+app.use("/country/v1", countryRoutes);
+app.use("/itinerary/v1", itineraryRoutes);
+app.use("/destination/v1", destinationRoutes);
 
 
 
