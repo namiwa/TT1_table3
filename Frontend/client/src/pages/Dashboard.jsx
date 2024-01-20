@@ -11,11 +11,12 @@ const Dashboard = () => {
   const handleOpen = () => setOpenModal(true);
 
   return (
-    <section className='dashboard-page'>
+    <section className='dashboard-page container'>
       <Button onClick={handleOpen}>Open modal</Button>
       {openModal && (
         <DestinationModal openModal={openModal} setOpenModal={setOpenModal} />
       )}
+        <button className='add-button'>ADD ITENARY</button>
         <DashboardTable />
     </section>
   )

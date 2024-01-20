@@ -4,7 +4,7 @@ html, body, #root {
   background-color: #D3D3D3;
 }
 
-body {
+.container {
   width: 80%;
   margin: auto;
 }
