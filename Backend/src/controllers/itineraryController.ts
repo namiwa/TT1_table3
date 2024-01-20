@@ -1,8 +1,12 @@
-const db = require("./db");
+// const db = require("./db");
+
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const getAllItineraries = async (req, res) => {
   try {
-    const result = await db.pool.query("select * from itinerary");
+    const result = await prisma.itinerary.findMany();
     res.send(result);
     res.status(200).json({ success: true, data: result });
   } catch (error) {
@@ -10,18 +14,7 @@ const getAllItineraries = async (req, res) => {
   }
 };
 
-const getItinerary = async (req, res) => {
-  const itinerary = req.body;
-  try {
-    const result = await db.pool.query("select * from itinerary where id = ?", [
-      itinerary.id,
-    ]);
-    res.send(result);
-    res.status(200).json({ success: true, data: result });
-  } catch (error) {
-    console.error(error);
-  }
-};
+const getItinerary = async (req, res) => {};
 
 const addItinerary = () => {};
 

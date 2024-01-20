@@ -1,8 +1,20 @@
-import {connectIternaryToCountry, createCountry, createDestination, createUserItinerary, getUser, newUser} from "./repository/testRepository";
+import {
+  connectIternaryToCountry,
+  createCountry,
+  createDestination,
+  createUserItinerary,
+  getUser,
+  newUser,
+} from "./repository/testRepository";
 
-require('dotenv').config();
+const countryRoutes = require("./routes/countryRoutes");
+const itineraryRoutes = require("./routes/itineraryRoutes");
+
+require("dotenv").config();
 import cors from "cors";
 import express from "express";
+
+const detinationRoutes = require("./routes/destinationRoutes");
 
 const PORT = process.env.PORT;
 const app = express();
@@ -14,6 +26,10 @@ import passport from "passport";
 
 require('./config/passport strategy/passportJWT')(passport)
 app.use(passport.initialize()); // Create the passport strategy object
+
+app.use("/country", countryRoutes);
+app.use("/itinerary", itineraryRoutes);
+app.use("/destination", detinationRoutes);
 
 app.use(express.json());
 app.use(cors(corsOptions))
