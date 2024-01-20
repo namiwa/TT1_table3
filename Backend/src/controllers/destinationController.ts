@@ -33,31 +33,36 @@ export const createDestination = async (req, res) => {
 };
 
 export const updateDestination = async (req, res)  => {
-    return prisma.destination.update({
-        where: {
-            destinationId: req.body.destinationId
-        },
-        data: {
-            destinationId: req.body.destinationId,
-            destinationCountryId: req.body.destinationCountryId,
-            cost: req.body.cost,
-            name: req.body.name,
-            notes: req.body.notes
-        }
-    });
+    try {
+        const result = await prisma.destination.update({
+            where: {
+                destinationId: req.body.destinationId
+            },
+            data: {
+                destinationId: req.body.destinationId,
+                destinationCountryId: req.body.destinationCountryId,
+                cost: req.body.cost,
+                name: req.body.name,
+                notes: req.body.notes
+            }
+        })
+        res.status(200).json({ "message": `sent` });
+        res.json(result);
+      } catch (error) {
+        console.error(error);
+    }
 }
 
-// export const deleteDestination = (insuranceId: number, userId: number) => {
-//     return prisma.insurancePolicy.update({
-//         where: {
-//             insuranceId: insuranceId
-//         },
-//         data: {
-//             user: {
-//                 disconnect: {
-//                     userId: userId
-//                 }
-//             }
-//         }
-//     });
-// };
+export const deleteDestination = async (req, res)  => {
+    try {
+        const result = await prisma.destination.delete({
+            where: {
+                destinationId: req.body.destinationId
+            }
+        })
+        res.status(200).json({ "message": `successfully deleted` });
+        res.json(result);
+      } catch (error) {
+        console.error(error);
+    }
+};
