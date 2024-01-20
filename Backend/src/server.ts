@@ -11,6 +11,7 @@ import express from "express";
 import corsOptions from "./config/cors/corsOption";
 import authRoutes from "./routes/authRoutes";
 import passport from "passport";
+import globalErrorHandler from "./error/globalErrorhandler";
 
 require("./config/passport strategy/passportJWT")(passport);
 const app = express();
@@ -24,4 +25,6 @@ app.use("/country/v1", countryRoutes);
 app.use("/itinerary/v1", itineraryRoutes);
 app.use("/destination/v1", destinationRoutes);
 
+
+app.use(globalErrorHandler)
 app.listen(PORT, () => console.log(`listening to port ${PORT} `)); // This port should be in env

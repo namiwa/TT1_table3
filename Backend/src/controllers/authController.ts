@@ -3,6 +3,7 @@ import {NextFunction, Request, Response} from 'express';
 import { z } from 'zod';
 import {createUser, getUserById, getUserByUsername} from "../repository/userRepository";
 import {genHashPassword, issueAccessToken, validatePassword, validateUsername } from '../util/jwtService';
+import {logger} from "../config/winston logger/logger";
 
 export const prisma = new PrismaClient()
 
@@ -32,6 +33,7 @@ export const handleLogin = async (req: Request, res: Response, next: NextFunctio
         if (!isPasswordValid) throw new Error('Invalid password');
         // User is valid, return JWT token
         const accessToken = issueAccessToken(user)
+        logger().info("User logged in successfully")
         res.status(200).json({accessToken: accessToken, firstName: user.firstName, lastName: user.lastName, userId: user.userId})
     } catch (e) {
         next(e)
@@ -43,6 +45,7 @@ export const handleRegister = async (req: Request, res: Response, next: NextFunc
         // If the req is missing anything, it will throw an error
         const user: User = UserSchema.parse(req.body);
         const createdUser = await createUser(user.username, await genHashPassword(user.password), user.firstName, user.lastName, );
+        logger().info("User registered successfully...")
         res.status(201).json();
     } catch (e) {
         // Pass on to global error handler
