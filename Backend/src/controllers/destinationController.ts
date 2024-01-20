@@ -28,7 +28,7 @@ export const getDestinationViaId = async (req: Request, res: Response, next: Nex
 
 export const createDestination = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const result = prisma.destination.create({
+        const result = await prisma.destination.create({
             data: {
                 destinationId: req.body.destinationId,
                 destinationCountryId: req.body.destinationCountryId,

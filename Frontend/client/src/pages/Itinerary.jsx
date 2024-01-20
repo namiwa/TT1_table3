@@ -3,6 +3,7 @@ import { Box, Container, Button } from "@mui/material";
 import DestinationTable from "../components/DestinationTable";
 import PublicIcon from "@mui/icons-material/Public";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import './Itinerary.css';
 
 const Itinerary = () => {
@@ -24,20 +25,23 @@ const Itinerary = () => {
   }, []);
 
   return (
-    <Container maxWidth={false} className="container">
+    <Container maxWidth={false} className="itinerary-page container">
       <Box>
         {/* <Item key={"Country: "} value={country} />
         <Item key={"Budget: "} value={budget} />
         <Item key={"Title: "} value={title} /> */}
         <h1>{title}</h1>
         <p className="itinerary-details"><PublicIcon /> Country: {country}</p>
-        <p className="itinerary-details"><LocalAtmIcon /> Budget: {budget}</p>
+        <p className="itinerary-details"><LocalAtmIcon /> Budget: ${budget}</p>
       </Box>
+      <br />
       <div>
-        Destinations:
+        <div className="destinations-header">
+          <p className="itinerary-details"><LocationOnIcon /> Destinations:</p>
+          <button className='add-button'>ADD DESTINATION</button>
+        </div>
         <DestinationTable />
       </div>
-      <Button variant="outlined">Add Destination</Button>
     </Container>
   );
 };
