@@ -16,7 +16,7 @@ export const getAllDestination = async (req, res) => {
 
 export const createDestination = async (req, res) => {
     try {
-        const result = prisma.destination.create({
+        const result = await prisma.destination.create({
             data: {
                 destinationId: req.body.destinationId,
                 destinationCountryId: req.body.destinationCountryId,
