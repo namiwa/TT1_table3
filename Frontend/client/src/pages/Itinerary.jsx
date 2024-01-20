@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Container, Button } from "@mui/material";
 import Navbar from "../components/Navbar";
-import Item from "../components/Item";
+import DestinationTable from "../components/DestinationTable";
 
 const Itinerary = () => {
     const [country, setCountry] = useState("SG");
@@ -34,11 +34,7 @@ const Itinerary = () => {
       </Box>
       <div>
         Destinations:
-        <ul>
-          {destination.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <DestinationTable />
       </div>
       <Button variant="outlined">Add Destination</Button>
     </Container>
