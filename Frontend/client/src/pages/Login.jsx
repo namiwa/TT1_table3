@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <section className="login-page">
+    <section className="login-page container">
       <div className="form-box">
         <h1>Login</h1>
         <form onSubmit={handleLogin}>
