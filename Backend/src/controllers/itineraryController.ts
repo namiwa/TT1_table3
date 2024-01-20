@@ -14,7 +14,21 @@ const getAllItineraries = async (req, res) => {
   }
 };
 
-const getItinerary = async (req, res) => {};
+const getItinerary = async (req, res) => {
+  try {
+    const id = req.params;
+    console.log(req.params);
+    const result = await prisma.itinerary.findUnique({
+      where: {
+        iternaryId: id,
+      },
+    });
+    res.send(result);
+    res.status(200).json({ success: true, data: result });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const addItinerary = () => {};
 
