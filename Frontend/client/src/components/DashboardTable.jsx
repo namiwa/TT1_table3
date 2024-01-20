@@ -63,7 +63,7 @@ function Row(props) {
         className="table-content"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.04)" }}
       >
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <ul className="destinations-list">
