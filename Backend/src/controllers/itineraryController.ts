@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 
 const getAllItineraries = async (req, res) => {
   try {
+    console.log(req);
     const result = await prisma.itinerary.findMany();
     res.send(result);
     res.status(200).json({ success: true, data: result });
@@ -16,11 +17,11 @@ const getAllItineraries = async (req, res) => {
 
 const getItinerary = async (req, res) => {
   try {
-    const id = req.params;
-    console.log(req.params);
+    const id = req.params.id;
+    console.log(id);
     const result = await prisma.itinerary.findUnique({
       where: {
-        iternaryId: id,
+        itineraryId: parseInt(id),
       },
     });
     res.send(result);
@@ -30,7 +31,19 @@ const getItinerary = async (req, res) => {
   }
 };
 
-const addItinerary = () => {};
+const addItinerary = async (req, res) => {
+  try {
+    const result = await prisma.itinerary.create({
+      data: {
+        budget: req.body.budget,
+        title: req.body.title,
+      },
+    });
+    res.send(result);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const editItinerary = () => {};
 

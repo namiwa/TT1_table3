@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DashboardTable from "../components/DashboardTable";
-import "./Dashboard.css";
+import DashboardTable from '../components/DashboardTable';
+import './Dashboard.css';
 import { Button } from "@mui/material";
 import NewDestinationModal from "../components/NewDestinationModal";
 import EditDestinationModal from "../components/EditDestinationModal";
