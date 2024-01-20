@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
@@ -31,10 +31,10 @@ function createData(title, country, budget, destinations) {
 
 function Row(props) {
   const { row } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <React.Fragment>
+    <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
           <IconButton
@@ -63,7 +63,7 @@ function Row(props) {
         className="table-content"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.04)" }}
       >
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <ul className="destinations-list">
@@ -71,33 +71,13 @@ function Row(props) {
                   return <li>{destination}</li>;
                 })}
               </ul>
-              {/* <button>Edit</button>
-                <button>Delete</button> */}
             </Box>
           </Collapse>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }
-
-//   Row.propTypes = {
-//     row: PropTypes.shape({
-//       calories: PropTypes.number.isRequired,
-//       carbs: PropTypes.number.isRequired,
-//       fat: PropTypes.number.isRequired,
-//       history: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           amount: PropTypes.number.isRequired,
-//           customerId: PropTypes.string.isRequired,
-//           date: PropTypes.string.isRequired,
-//         }),
-//       ).isRequired,
-//       name: PropTypes.string.isRequired,
-//       price: PropTypes.number.isRequired,
-//       protein: PropTypes.number.isRequired,
-//     }).isRequired,
-//   };
 
 Row.propTypes = {
   row: PropTypes.shape({

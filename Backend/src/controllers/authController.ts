@@ -32,7 +32,7 @@ export const handleLogin = async (req: Request, res: Response, next: NextFunctio
         if (!isPasswordValid) throw new Error('Invalid password');
         // User is valid, return JWT token
         const accessToken = issueAccessToken(user)
-        res.status(200).json({accessToken: accessToken})
+        res.status(200).json({accessToken: accessToken, firstName: user.firstName, lastName: user.lastName, userId: user.userId})
     } catch (e) {
         next(e)
     }

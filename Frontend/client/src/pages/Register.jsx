@@ -32,7 +32,7 @@ const Register = () => {
     }
 
     return (
-        <section className='register-page'>
+        <section className='register-page container'>
             <div className='form-box'>
                 <h1>Register</h1>
                 <form onSubmit={handleRegister}>
