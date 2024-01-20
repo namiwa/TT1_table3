@@ -22,17 +22,17 @@ model User {
 }
 
 model Itinerary {
-  iternaryId Int @id @default(autoincrement()) @map("id")
+  itineraryId Int @id @default(autoincrement()) @map("id")
   budget Float?
   title String? @db.VarChar(100)
 
   // @ManyToOne with user
-  userIternaryId Int? @map("user_id") 
-  user User? @relation(fields: [userIternaryId], references: [userId])
+  userItineraryId Int? @map("user_id") 
+  user User? @relation(fields: [userItineraryId], references: [userId])
 
   // One to many. Many itineraries can have one country
-  countryIternaryId Int? @map("country_id")
-  country Country? @relation(fields: [countryIternaryId], references: [countryId])
+  countryItineraryId Int? @map("country_id")
+  country Country? @relation(fields: [countryItineraryId], references: [countryId])
 
   // @manytomany  One itinerary can have many destination, Relationship between Iternary <-> destination
   destination Destination[]
@@ -41,7 +41,7 @@ model Itinerary {
 model Country {
   countryId  Int @id @default(autoincrement()) @map("id")
   name String @db.VarChar(50)
-  iternaries Itinerary[]
+  itineraries Itinerary[]
 
   destinations Destination[]
 }
