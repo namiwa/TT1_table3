@@ -1,0 +1,99 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background-color: #D3D3D3;
+}
+
+body {
+  width: 80%;
+  margin: auto;
+}
+
+.register-page, .login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.form-box {
+  width: 80%;
+  max-width: 380px;
+  margin: auto;
+  padding: 4% 8%;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px 3px #00000016;
+  background-color: #FFFFFF;
+  position: relative;
+}
+
+.form-box h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 0;
+}
+
+.form-input input {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #BBBBBB;
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.form-input .icons {
+  margin: 0 5px;
+}
+
+.form-input .password-icons {
+  position: absolute;
+  right: 18%;
+  margin-top: -34px;
+  color: #BBBBBB;
+}
+
+.form-input .password-icons:hover {
+  cursor: pointer;
+}
+
+.form-input input:focus-visible {
+  border: 0;
+  border-bottom: 2px solid #000000;
+  outline: 0;
+}
+
+.form-box button {
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 8px 20px;
+  border: 3px solid #000000;
+  display: flex;
+  margin: 10px auto;
+  font-weight: 700;
+}
+
+.form-box button:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  cursor: pointer;
+}
+
+.form-box button:disabled {
+  background-color: #BBBBBB;
+  border: 3px solid #BBBBBB;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}
+
+.form-box p {
+  text-align: center;
+}
+
+.form-box a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 700;
+}
